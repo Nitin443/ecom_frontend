@@ -1,9 +1,21 @@
 import React from 'react';
+import Layout from './Layout';
+import Menu from './Menu';
+import { API } from '../../config';
 
 function Home() {
     return (
-        <div className='home'>
-         <h1>Home</h1>
+        <div>
+
+        <Menu />
+        
+         <Layout 
+             title="Home page"
+             description="welcome at home page"
+         />
+
+         {API}
+
         </div>
     );
 }
