@@ -14,7 +14,6 @@ function Home() {
              description="welcome at home page"
          />
 
-         {API}
 
         </div>
     );
