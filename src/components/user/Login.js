@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import Layout from "../core/Layout";
+import { Redirect } from "react-router-dom";
 import Menu from "../core/Menu";
+import {login} from "../authApi";
 
 function Login() {
 
@@ -21,24 +23,7 @@ function Login() {
           );
       }
 
-      const login = async(user) => {
-          try {
-            
-            const data = await fetch('http://localhost:8000/login', {
-                method: "POST",
-                headers: {
-                    Accept: "application/json",
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(user)
-            });
-
-            return data.json();
-
-          } catch (error) {
-              console.log(error);
-          }
-      }
+      
 
       const clickLogin = (event) => {
         event.preventDefault();
@@ -65,17 +50,20 @@ function Login() {
         );
     }
 
+    const redirectUser = () => {
+        return <Redirect to="/" />
+    }
+
     return (
         <div className='login'>
 
             <Menu />
 
-            <Layout
-                title="Login"
-                description="Login to Your Account"
-                className="container col-md-6 offset-md-6" children={loginHandler()}
-            
-            ></Layout>
+            <Layout title="Login" description="Login to Your Account" className="container col-md-6 offset-md-6"  >
+
+                {loginHandler()}
+                
+            </Layout>
         </div>
     );
 }
