@@ -11,12 +11,38 @@ function Login() {
        success: false
     })
 
+    const {email, password} = loginVal;
+
       function handleChange(name){
           return(
               (event) => {
                 setLoginVal({...loginVal, error: false, [name]: event.target.value});
               }
           );
+      }
+
+      const login = async(user) => {
+          try {
+            
+            const data = await fetch('http://localhost:8000/login', {
+                method: "POST",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(user)
+            });
+
+            return data.json();
+
+          } catch (error) {
+              console.log(error);
+          }
+      }
+
+      const clickLogin = (event) => {
+        event.preventDefault();
+        login({email, password});
       }
 
     function loginHandler() {
@@ -33,7 +59,7 @@ function Login() {
                     <input onChange={handleChange('password')} type="password" className="form-control" />
                 </div>
 
-                <button className="btn btn-primary">Login</button>
+                <button onClick={clickLogin} className="btn btn-primary">Login</button>
 
             </form>
         );

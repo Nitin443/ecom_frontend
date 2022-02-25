@@ -64,7 +64,7 @@ function Signup() {
         }
     };
 
-    const clickSignup = event => {
+    const clickSignup = (event) => {
         event.preventDefault();
         signup({ name, email, password });
     };
