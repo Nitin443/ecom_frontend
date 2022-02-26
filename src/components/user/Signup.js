@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Layout from "../core/Layout";
 import Menu from "../core/Menu";
 import {signup} from "../authApi";
+import {isUndefined} from "lodash";
+import {Link} from "react-router-dom";
 
 
 function Signup() {
@@ -28,29 +30,17 @@ function Signup() {
 
     const { name, email, password, error, success } = values;
 
-    // const signup = (user) => {
-    //   // console.log(user);
-    //   fetch('http://localhost:8000/signup', {
-    //       method: "POST",
-    //       headers: {
-    //           Accept: "application/json",
-    //           "Content-Type": "application/json"
-    //       },
-    //       body: JSON.stringify(user)
-    //   })
-    //   .then(response => {
-    //       return response.json();
-    //   })
-    //   .catch(err => {
-    //       console.log(err)
-    //   });
-    // };
 
-    
-
-    const clickSignup = (event) => {
+    const clickSignup = async(event) => {
         event.preventDefault();
-         signup({ name, email, password });
+     const data = await signup({ name, email, password });
+        // console.log(data.errorMessage[0].message); 
+
+       if(!isUndefined(data.errorMessage)){
+           setValues({...values, error: data.errorMessage[0].message, success: false});
+       }else{
+           setValues({...values, name: '', email: '', password: '', error: '', success: true});
+       }
     };
 
     const showError = () => {
@@ -59,16 +49,16 @@ function Signup() {
                 {error}
             </div>
         );
-    }
+    };
 
 
     const showSucess = () => {
         return (
             <div className="alert alert-info" style={{ display: success ? '' : 'none' }}>
-                New Account is created.
+                New Account is created. Please <Link to="/login">Login</Link>
             </div>
         );
-    }
+    };
 
     const signupForm = () => {
         return (

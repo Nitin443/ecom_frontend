@@ -1,34 +1,45 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Layout from "../core/Layout";
 import { Redirect } from "react-router-dom";
 import Menu from "../core/Menu";
-import {login} from "../authApi";
+import { login } from "../authApi";
+import { isUndefined } from "lodash";
 
 function Login() {
 
-    const[loginVal, setLoginVal] = useState({
-       email: '',
-       password: '',
-       error: '',
-       success: false
+    const [loginVal, setLoginVal] = useState({
+        email: '',
+        password: '',
+        error: '',
+        redirect: false
     })
 
-    const {email, password} = loginVal;
+    const { email, password, redirect, error } = loginVal;
 
-      function handleChange(name){
-          return(
-              (event) => {
-                setLoginVal({...loginVal, error: false, [name]: event.target.value});
-              }
-          );
-      }
+    function handleChange(name) {
+        return (
+            (event) => {
+                setLoginVal({ ...loginVal, error: false, [name]: event.target.value });
+            }
+        );
+    }
 
-      
 
-      const clickLogin = (event) => {
+
+    const clickLogin = async (event) => {
         event.preventDefault();
-        login({email, password});
-      }
+        const data = await login({ email, password });
+
+        // set token in local storage
+        localStorage.setItem('token', data.token);
+        console.log(data);
+
+        if (!isUndefined(data.errorMessage)) {
+            setLoginVal({ ...loginVal, error: error ? data.errorMessage[0].message : data.errorMessage });
+        }else {
+            setLoginVal({ ...loginVal, redirect: true });
+        }
+    }
 
     function loginHandler() {
         return (
@@ -50,9 +61,18 @@ function Login() {
         );
     }
 
+    const showError = () => {
+        return (
+            <div className="alert alert-danger" style={{ display: error ? '' : 'none' }}>
+                {error}
+            </div>
+        );
+    };
+
     const redirectUser = () => {
+
         return <Redirect to="/" />
-    }
+    };
 
     return (
         <div className='login'>
@@ -61,8 +81,10 @@ function Login() {
 
             <Layout title="Login" description="Login to Your Account" className="container col-md-6 offset-md-6"  >
 
+                {showError()}
+                {redirect ? redirectUser() : ''}
                 {loginHandler()}
-                
+
             </Layout>
         </div>
     );
