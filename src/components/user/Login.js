@@ -33,9 +33,10 @@ function Login() {
         // set token in local storage
         localStorage.setItem('token', data.token);
         console.log(data);
+        
 
         if (!isUndefined(data.errorMessage)) {
-            setLoginVal({ ...loginVal, error: error ? data.errorMessage[0].message : data.errorMessage });
+            setLoginVal({ ...loginVal, error:  data.errorMessage});
         }else {
             setLoginVal({ ...loginVal, redirect: true });
         }

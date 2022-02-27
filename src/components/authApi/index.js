@@ -83,8 +83,12 @@ export const isAuthenticate = () => {
     }
 
     if (localStorage.getItem("token")) {
-        console.log(localStorage.getItem("token"));
-        return true;
+        if(localStorage.getItem("token") === "undefined"){
+            return false;
+        }else{
+            console.log(localStorage.getItem("token"));
+            return true;
+        }
 
     }else{
         return false;

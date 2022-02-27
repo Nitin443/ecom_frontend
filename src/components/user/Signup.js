@@ -36,7 +36,7 @@ function Signup() {
      const data = await signup({ name, email, password });
 
        if(!isUndefined(data.errorMessage)){
-           setValues({...values, error: data.errorMessage[0].message, success: false});
+           setValues({...values, error: data.errorMessage, success: false});
        }else{
            setValues({...values, name: '', email: '', password: '', error: '', success: true});
        }
