@@ -1,8 +1,9 @@
 import Signup from "./user/Signup";
 import Login from "./user/Login";
 import Home from "./core/Home";
-import Menu from "./core/Menu";
+import PrivateRoute from "./authApi/PrivateRoute";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Dashboard from "./user/UserDashboard";
 
 
 function App() {
@@ -24,6 +25,12 @@ function App() {
     <Route exact path="/login" >
           <Login/> 
     </Route>
+
+    <PrivateRoute path="/dashboard" exact component={Dashboard}/>
+
+    {/* <PrivateRoute exact path="/dashboard">
+      <Dashboard />
+    </PrivateRoute> */}
 
     {/* <Route exact path='/signup' element={<Signup />} />
 

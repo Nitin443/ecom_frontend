@@ -32,6 +32,10 @@ function Login() {
 
         // set token in local storage
         localStorage.setItem('token', data.token);
+        localStorage.setItem('name', data.Name);
+        localStorage.setItem('userId', data.userId);
+        localStorage.setItem('role', data.role);
+        localStorage.setItem('email', data.email);
         console.log(data);
         
 
