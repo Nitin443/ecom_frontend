@@ -67,6 +67,10 @@ export const logout = async () => {
     try {
 
         localStorage.removeItem('token');
+        localStorage.removeItem('name');
+        localStorage.removeItem('role');
+        localStorage.removeItem('email');
+        localStorage.removeItem('userId');
         return <Redirect to="/" />
 
     } catch (error) {

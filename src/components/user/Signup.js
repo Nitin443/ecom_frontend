@@ -27,7 +27,8 @@ function Signup() {
     // const handleChange = (name) => (event) => {
     //     setValues({ ...values, error: false, [name]: event.target.value });
     // };
-
+    
+    // destructure values value
     const { name, email, password, error, success } = values;
 
 

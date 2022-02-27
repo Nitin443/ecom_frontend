@@ -6,6 +6,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Dashboard from "./user/UserDashboard";
 
 
+// Routes define here
+
 function App() {
   return (
     <div className="App">

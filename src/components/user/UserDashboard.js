@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
  
-  //  let info = isAuthenticate();
+  //  get values from local storage
   const name = localStorage.getItem("name");
   const email = localStorage.getItem("email");
   const role = localStorage.getItem("role");
