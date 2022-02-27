@@ -34,7 +34,6 @@ function Signup() {
     const clickSignup = async(event) => {
         event.preventDefault();
      const data = await signup({ name, email, password });
-        // console.log(data.errorMessage[0].message); 
 
        if(!isUndefined(data.errorMessage)){
            setValues({...values, error: data.errorMessage[0].message, success: false});

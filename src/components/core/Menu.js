@@ -1,5 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Link, withRouter} from 'react-router-dom';
+import { logout, isAuthenticate } from '../authApi';
+import { isUndefined } from 'lodash';
 
 const isActive = (history, path) => {
     if(history.location.pathname === path){
@@ -10,6 +12,21 @@ const isActive = (history, path) => {
 }
 
 function Menu({ history }){
+
+ const[auth, setAuth] = useState(true);
+ const[auth1, setAuth1] = useState(false);
+
+ const checkAuth = () => {
+       
+    // let checkToken = authenticate();
+    // if(checkToken === true){
+    //     setAuth(false);
+    // }
+
+ }
+
+ 
+
     return(
         <div>
 
@@ -19,15 +36,20 @@ function Menu({ history }){
          <Link className='nav-link' to='/'  style={isActive(history, '/')}>Home</Link>
         </li>
 
-        <li className='nav-item'>
+        {!isAuthenticate() && (<li className='nav-item'>
          <Link className='nav-link' to='/signup'  style={isActive(history, '/signup')}>Signup</Link>
-        </li>
+        </li> )}
 
-        <li className='nav-item'>
+       {!isAuthenticate() && (<li className='nav-item'>
          <Link className='nav-link' to='/login'  style={isActive(history, '/login')}>Login</Link>
-        </li>
+        </li> )}
+
+        {isAuthenticate() &&  (<li className='nav-item'>
+         <Link className='nav-link' onClick={logout} style={{color: 'yellow'}}>Logout</Link>
+        </li> )}
 
         </ul>
+        {/* {checkAuth()} */}
 
         </div>
     );
