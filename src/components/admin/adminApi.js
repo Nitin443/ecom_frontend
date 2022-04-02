@@ -1,3 +1,4 @@
+import { API } from "../../config";
 
 export const creatCategory = async (token, category) => {    
     try {
@@ -18,3 +19,5 @@ export const creatCategory = async (token, category) => {
         throw new Error(error);
     }
 };
+
+// ${API}/category/create

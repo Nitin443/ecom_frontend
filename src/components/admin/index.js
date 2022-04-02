@@ -27,8 +27,8 @@ function AddCategory() {
 
         const result = await creatCategory(token, { name });
         console.log(result);
-        if (result.error) {
-            setError(result.error);
+        if (result.errorMessage) {
+            setError(result.errorMessage);
         } else {
             setError('');
             setSuccess(true);
