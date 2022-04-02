@@ -6,7 +6,7 @@ import AdminRoute from "./authApi/AdminRoute";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Dashboard from "./user/UserDashboard";
 import AdminDashboard from "./user/AdminDashboard";
-
+import AddCategory from "./admin";
 
 // Routes define here
 
@@ -33,6 +33,8 @@ function App() {
     <PrivateRoute path="/user/dashboard" exact component={Dashboard}/>
 
     <AdminRoute path="/admin/dashboard" exact component={AdminDashboard}/>
+
+    <AdminRoute path="/create/category" exact component={AddCategory}/>
 
     {/* <PrivateRoute exact path="/dashboard">
       <Dashboard />
