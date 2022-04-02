@@ -1,44 +1,51 @@
-import React, {useState} from 'react';
-import {Link, withRouter} from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, withRouter } from 'react-router-dom';
 import { logout, isAuthenticate } from '../authApi';
 
 const isActive = (history, path) => {
-    if(history.location.pathname === path){
-        return {color: '#ff9900'}
-    }else{
-        return {color: '#ffffff'}
+    if (history.location.pathname === path) {
+        return { color: '#ff9900' }
+    } else {
+        return { color: '#ffffff' }
     }
 }
 
-function Menu({ history }){
+function Menu({ history }) {
 
-    return(
+    const role = localStorage.getItem("role");
+
+    return (
         <div>
 
-        <ul className='nav nav-tabs bg-primary'>
+            <ul className='nav nav-tabs bg-primary'>
 
-        <li className='nav-item'>
-         <Link className='nav-link' to='/'  style={isActive(history, '/')}>Home</Link>
-        </li>
+                <li className='nav-item'>
+                    <Link className='nav-link' to='/' style={isActive(history, '/')}>Home</Link>
+                </li>
 
-        <li className='nav-item'>
-         <Link className='nav-link' to='/dashboard'  style={isActive(history, '/dashboard')}>Dashboard</Link>
-        </li>
 
-        {!isAuthenticate() && (<li className='nav-item'>
-         <Link className='nav-link' to='/signup'  style={isActive(history, '/signup')}>Signup</Link>
-        </li> )}
+                {(isAuthenticate() && role === "0") && (<li className='nav-item'>
+                    <Link className='nav-link' to='/user/dashboard' style={isActive(history, '/user/dashboard')}>Dashboard</Link>
+                </li>)}
 
-       {!isAuthenticate() && (<li className='nav-item'>
-         <Link className='nav-link' to='/login'  style={isActive(history, '/login')}>Login</Link>
-        </li> )}
+                {(isAuthenticate() && role === "1") && (<li className='nav-item'>
+                    <Link className='nav-link' to='/admin/dashboard' style={isActive(history, '/admin/dashboard')}>Dashboard</Link>
+                </li>)}
 
-        {isAuthenticate() &&  (<li className='nav-item'>
-         <Link className='nav-link' onClick={logout} style={{color: 'yellow'}}>Logout</Link>
-        </li> )}
+                {!isAuthenticate() && (<li className='nav-item'>
+                    <Link className='nav-link' to='/signup' style={isActive(history, '/signup')}>Signup</Link>
+                </li>)}
 
-        </ul>
-        {/* {checkAuth()} */}
+                {!isAuthenticate() && (<li className='nav-item'>
+                    <Link className='nav-link' to='/login' style={isActive(history, '/login')}>Login</Link>
+                </li>)}
+
+                {isAuthenticate() && (<li className='nav-item'>
+                    <Link className='nav-link' onClick={logout} style={{ color: 'yellow' }}>Logout</Link>
+                </li>)}
+
+            </ul>
+            {/* {checkAuth()} */}
 
         </div>
     );
