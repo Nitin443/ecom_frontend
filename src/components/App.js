@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Dashboard from "./user/UserDashboard";
 import AdminDashboard from "./user/AdminDashboard";
 import AddCategory from "./admin";
+import AddProduct from "./admin/AddProduct";
 
 // Routes define here
 
@@ -35,6 +36,8 @@ function App() {
     <AdminRoute path="/admin/dashboard" exact component={AdminDashboard}/>
 
     <AdminRoute path="/create/category" exact component={AddCategory}/>
+
+    <AdminRoute path="/crete/product" exact component={AddProduct}/>
 
     {/* <PrivateRoute exact path="/dashboard">
       <Dashboard />

@@ -1,7 +1,4 @@
 import React, { useState } from 'react';
-import { Route, Redirect } from 'react-router-dom';
-import { isAuthenticate } from './index';
-import { Link } from 'react-router-dom';
 import Layout from '../core/Layout';
 import Menu from '../core/Menu';
 import { creatCategory } from './adminApi';
@@ -54,7 +51,7 @@ function AddCategory() {
                     <label className='text-muted'>Name</label>
                     <input type='text' className='form-control' onChange={handleChange} value={name} autoFocus />
                 </div>
-                <button className='btn btn-outline-primary'>Create Category</button>
+                <button className='btn btn-primary'>Create Category</button>
             </form>
         );
     };
