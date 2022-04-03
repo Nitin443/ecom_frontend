@@ -43,6 +43,7 @@ function AddProduct() {
 
     const init = async () => {
         const categorys = await getCategory(token);
+        console.log(categorys);
         if (categorys.errorMessage) {
             setValues({ ...values, error: categorys.errorMessage });
         } else {
