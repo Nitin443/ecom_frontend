@@ -43,8 +43,8 @@ function Home() {
             <Menu />
 
             <Layout
-                title="Home page"
-                description="welcome at home page"
+                title="Nitin Ecommerce App"
+                description="Welcome To Our Ecommerce App. Do Shopping With Best Price"
                 className="container-fluid"
             />
 

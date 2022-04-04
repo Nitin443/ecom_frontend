@@ -22,28 +22,29 @@ const Card = ({ product }) => {
         //     </div>
         // </div>
 
-        
-            <div className="product">
-                <div className="productInfo">
-                    <p>{product.name}</p>
-                    <p className="productPrice">
-                        <small>₹</small>
-                        <strong>{product.price}</strong>
-                    </p>
 
-                </div>
-                <img src='https://m.media-amazon.com/images/I/81-kYsU1JeL._AC_UL320_.jpg' alt="productImg" />
-                <p>{product.description}</p>
-                <div>
-                    <Link to='/'>
-                        <button className="btn button btn-primary">
-                            View Product
-                        </button>
-                    </Link>
-                    <button className="btn btn-outline-warning">
-                        Add to Cart
+        <div className="product">
+
+            <img src='https://m.media-amazon.com/images/I/81-kYsU1JeL._AC_UL320_.jpg' alt="productImg" />
+            <div className="productInfo">
+                <p>{product.name}</p>
+                <p className="productPrice">
+                    <small>₹</small>
+                    <strong>{product.price}</strong>
+                </p>
+
+            </div>
+            {/* <p>{product.description}</p> */}
+            <div>
+                <Link to='/'>
+                    <button className="btn button btn-primary">
+                        View Product
                     </button>
-                </div>
+                </Link>
+                <button className="btn btn-outline-warning">
+                    Add to Cart
+                </button>
+            </div>
 
 
         </div>

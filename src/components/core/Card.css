@@ -26,7 +26,8 @@
 
   .productStyle {
      display: flex;
+     flex-wrap: wrap;
      flex-direction: row;
-     background-color: aqua;
+     background-color: lightgray;
      justify-content: space-around;
   }
