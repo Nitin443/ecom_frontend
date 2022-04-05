@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { logout, isAuthenticate } from '../authApi';
+import Shop from './Shop';
 
 const isActive = (history, path) => {
     if (history.location.pathname === path) {
@@ -21,6 +22,10 @@ function Menu({ history }) {
 
                 <li className='nav-item'>
                     <Link className='nav-link' to='/' style={isActive(history, '/')}>Home</Link>
+                </li>
+
+                <li className='nav-item'>
+                    <Link className='nav-link' to='/shop' style={isActive(history, '/shop')}>Shop</Link>
                 </li>
 
 

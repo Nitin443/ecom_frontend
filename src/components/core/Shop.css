@@ -1,0 +1,14 @@
+.shopStyle{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.productStyles {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    background-color: lightgray;
+    justify-content: space-around;
+    align-items: center;
+ }

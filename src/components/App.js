@@ -8,6 +8,7 @@ import Dashboard from "./user/UserDashboard";
 import AdminDashboard from "./user/AdminDashboard";
 import AddCategory from "./admin";
 import AddProduct from "./admin/AddProduct";
+import Shop from "./core/Shop";
 
 // Routes define here
 
@@ -21,6 +22,10 @@ function App() {
     
     <Route exact path="/" >
           <Home/> 
+    </Route>
+
+    <Route exact path="/shop" >
+          <Shop/> 
     </Route>
 
     <Route exact path="/signup" >
