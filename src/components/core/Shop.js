@@ -10,6 +10,7 @@ import Card from './Card';
 import './Card.css';
 import { getProduct } from './coreApi';
 import './Shop.css';
+import Search from './Search';
 
 const Shop = () => {
     const token = localStorage.getItem("token");
@@ -43,6 +44,10 @@ const Shop = () => {
             console.log(filterResult);
         }
     };
+
+    const removeFilter = () => {
+        loadProductsByArrival();
+    }
 
     const loadProductsByArrival = async () => {
         const products = await getProduct('createdAt');
@@ -98,6 +103,7 @@ const Shop = () => {
                 title="Shop Page"
                 description="Search And Filter Products For Shopping With Best Price"
                 className="container-fluid"
+                
             />
             <div className='shopStyle'>
                 <div className=''>
@@ -115,8 +121,10 @@ const Shop = () => {
                         />
                     </ul>
 
+                    <button onClick={removeFilter} className='btn filterButton btn-primary'>Remove Filters</button>
+
                 </div>
-                <div className=' container'>
+                <div className='container'>
 
                     <h4 className='mb-4'>Products List</h4>
                     <div className='productStyles'>

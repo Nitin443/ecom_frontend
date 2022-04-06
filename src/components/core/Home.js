@@ -5,6 +5,8 @@ import { API } from '../../config';
 import { getProduct } from './coreApi';
 import Card from './Card';
 import './Card.css';
+import Search from './Search';
+import './Home.css';
 
 function Home() {
 
@@ -47,7 +49,9 @@ function Home() {
                 description="Welcome To Our Ecommerce App. Do Shopping With Best Price"
                 className="container-fluid"
             />
-
+            <div className='searchBar'>
+            <Search />
+            </div>
             <h2 className='mb-4'>Best Seller</h2>
             <div className='productStyle'>
                 {productBySell.map((product, i) => {

@@ -1,3 +1,5 @@
+import queryString from 'query-string';
+
 export const getProduct = async (sortBy) => {    
     try {
         // const response = await fetch('http://localhost:8000/product/list?sordBy=' + sortBy + '&order=desc&limit=4', {
@@ -46,6 +48,23 @@ export const getFilterProducts = async (limit, skip, filters = {}) => {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(filterData)
+        });
+
+        const data = await response.json();
+        return await data;
+
+    } catch (error) {
+        throw new Error(error);
+    }
+};
+
+
+
+export const list = async (params) => {    
+    try {
+        const query = queryString.stringify(params);
+        const response = await fetch(`http://localhost:8000/product/listSearch?${query}`, {
+            method: "GET",
         });
 
         const data = await response.json();
