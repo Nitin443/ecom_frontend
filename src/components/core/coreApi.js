@@ -62,7 +62,6 @@ export const getFilterProducts = async (limit, skip, filters = {}) => {
 
 export const list = async (params) => {    
     try {
-        console.log('in api ...');
         const query = queryString.stringify(params);
         const response = await fetch(`http://localhost:8000/product/listSearch?${query}`, {
             method: "POST",

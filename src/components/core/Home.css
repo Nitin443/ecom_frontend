@@ -34,5 +34,6 @@
     flex-wrap: wrap;
     flex-direction: row;
     background-color: lightgray;
+    justify-content: space-around;
     
  }
