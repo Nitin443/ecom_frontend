@@ -50,16 +50,7 @@ function Home() {
                 className="container-fluid"
             />
             <div className='searchBar'>
-            <Search />
-            </div>
-            <h2 className='mb-4'>Best Seller</h2>
-            <div className='productStyle'>
-                {productBySell.map((product, i) => {
-                    return (
-                        <Card key={i} product={product} />
-                    );
-                })}
-
+                <Search />
             </div>
 
             <h2 className='mb-4'>New Arrival</h2>
@@ -71,6 +62,18 @@ function Home() {
                 })}
 
             </div>
+
+            <h2 className='mb-4'>Best Seller</h2>
+            <div className='productStyle'>
+                {productBySell.map((product, i) => {
+                    return (
+                        <Card key={i} product={product} />
+                    );
+                })}
+
+            </div>
+
+
 
 
         </div>

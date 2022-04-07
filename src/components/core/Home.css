@@ -3,12 +3,36 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-     background-color: green;
 }
 
 
 .searchForm{
     display: flex;
-    flex-direction: column;
-    background-color: brown;
+    flex-direction: row;
+    border-radius: 0%;
 }
+
+.inputStyle{
+    display: flex;
+    flex-direction: row;
+}
+
+.pickCategory{
+    padding-top: 13px;
+    padding-bottom: 13px;
+    border-color: black;
+    box-sizing: border-box;
+}
+
+.buttonStyle{
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.productStyles {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    background-color: lightgray;
+    
+ }

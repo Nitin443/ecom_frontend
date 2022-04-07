@@ -5,6 +5,8 @@ import './Card.css';
 import { list } from './coreApi';
 import './Home.css';
 
+// this component style css in Home.css file
+
 const Search = () => {
 
     const token = localStorage.getItem("token");
@@ -38,12 +40,15 @@ const Search = () => {
 
     const searchProducts = (results = []) => {
           return (
-              <div className='row'>
+              <div>
+              <h3>Search Products</h3>
+              <div className='productStyles'>
                {results.map((product ,i) => {
                 return(
                   <Card key={i} product={product} />
                 );
                })}
+              </div>
               </div>
           );  
     }
@@ -58,7 +63,6 @@ const Search = () => {
             }else{
                 setData({...data, results: productList.ProductList});
             }
-            console.log(productList.ProductList)
         }
 
     }
@@ -78,10 +82,9 @@ const Search = () => {
     const searchForm = () => {
         return (
             <form onSubmit={searchSubmit}>
-                <span className='input-group-text'>
-                    <div className='input-group input-group-lg'>
-                        <div className='input-group-prepend'>
-                            <select className='btn mr-2' onChange={handleChange('category')}>
+                    <div className=' inputStyle input-group input-group-lg'>
+                        <div className=''>
+                            <select className='pickCategory btn mr-2' onChange={handleChange('category')}>
                               <option value='All'>Pick Category</option>
                               {categories.map((c, i) => {
                                   return (
@@ -90,12 +93,12 @@ const Search = () => {
                               })};
                             </select>
                         </div>
-                        <input type='search' className='form-control' onChange={handleChange('search')} placeholder='Search By Name'/>
+                        <input type='search' className='form-control searchBox' onChange={handleChange('search')} placeholder='Search By Name'/>
+                        <div className=''>
+                     <button className='btn buttonStyle btn-primary'>Search</button>
                     </div>
-                    <div className='btn input-group-append' style={{border: 'none'}}>
-                     <button className='input-group-text'>Search</button>
                     </div>
-                </span>
+                    
             </form>
         );
     }
