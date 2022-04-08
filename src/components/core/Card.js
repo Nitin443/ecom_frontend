@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-//import "./Card.css";
+import "./Card.css";
 
 const Card = ({ product }) => {
     return (
@@ -36,7 +36,7 @@ const Card = ({ product }) => {
             </div>
             {/* <p>{product.description}</p> */}
             <div>
-                <Link to='/'>
+                <Link to={`/product/${product._id}`}>
                     <button className="btn button btn-primary">
                         View Product
                     </button>

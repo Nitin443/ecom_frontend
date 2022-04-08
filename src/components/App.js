@@ -9,6 +9,7 @@ import AdminDashboard from "./user/AdminDashboard";
 import AddCategory from "./admin";
 import AddProduct from "./admin/AddProduct";
 import Shop from "./core/Shop";
+import SingleProduct from "./core/SingleProduct";
 
 // Routes define here
 
@@ -43,6 +44,11 @@ function App() {
     <AdminRoute path="/create/category" exact component={AddCategory}/>
 
     <AdminRoute path="/crete/product" exact component={AddProduct}/>
+
+    <Route exact path="/product/:productId" >
+          <SingleProduct />
+    </Route>
+
 
     {/* <PrivateRoute exact path="/dashboard">
       <Dashboard />

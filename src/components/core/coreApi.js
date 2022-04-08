@@ -74,3 +74,20 @@ export const list = async (params) => {
         throw new Error(error);
     }
 };
+
+///get/:productId
+export const getSingleProduct = async (productId) => {    
+    try {
+        const response = await fetch(`http://localhost:8000/product/get/${productId}`, {
+            method: "GET",
+            headers: {
+            },
+        });
+
+        const data = await response.json();
+        return await data;
+
+    } catch (error) {
+        throw new Error(error);
+    }
+};
