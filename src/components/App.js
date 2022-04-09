@@ -10,6 +10,7 @@ import AddCategory from "./admin";
 import AddProduct from "./admin/AddProduct";
 import Shop from "./core/Shop";
 import SingleProduct from "./core/SingleProduct";
+import Cart from "./core/Cart";
 
 // Routes define here
 
@@ -47,6 +48,10 @@ function App() {
 
     <Route exact path="/product/:productId" >
           <SingleProduct />
+    </Route>
+
+    <Route exact path="/cart" >
+          <Cart />
     </Route>
 
 

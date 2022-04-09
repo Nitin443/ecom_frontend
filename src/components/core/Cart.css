@@ -1,0 +1,14 @@
+.cartStyle {
+    display: flex;
+     flex-wrap: wrap;
+     flex-direction: row;
+     background-color: lightgray;
+     justify-content: space-around;
+}
+
+.topdiv{
+    padding-left: 5rem;
+    margin-bottom: 2rem;
+}
+
+ 

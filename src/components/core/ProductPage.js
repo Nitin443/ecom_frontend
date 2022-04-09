@@ -1,8 +1,25 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, Redirect } from "react-router-dom";
 import "./ProductPage.css";
+import { addItem } from "./cartHelper";
 
 const ProductPage = ({ product }) => {
+
+
+    const [redirect, setRedirect] = useState(false);
+
+    const addToCart = () => {
+        addItem(product, () => {
+            setRedirect(true);
+        });
+    }
+
+    const shouldRedirect = (redirect) => {
+        if (redirect) {
+            return <Redirect to='/cart' />
+        }
+    }
+
     return (
 
         <div className="productStylesss fluid-container">
@@ -21,10 +38,10 @@ const ProductPage = ({ product }) => {
                     <p>Left in Stock : {product.quantity}</p>
                 </div>
                 
-                    <button className="btn buttonClass btn-primary">
+                    <button onClick={addToCart} className="btn buttonClass btn-primary">
                         Add to Cart
                     </button>
-                
+                    {shouldRedirect(redirect)}
 
             </div>
         </div>

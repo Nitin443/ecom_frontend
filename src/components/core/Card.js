@@ -1,27 +1,72 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, Redirect } from "react-router-dom";
 import "./Card.css";
+import { addItem, updateItem, removeItem } from "./cartHelper";
 
-const Card = ({ product }) => {
+const Card = ({product, showAddToCartButton=true, cartUpdateButton=false, showRemoveButton=false}) => {
+    const [redirect, setRedirect] = useState(false);
+    const [count, setCount] = useState(product.count);
+
+    const addToCart = () => {
+        addItem(product, () => {
+            setRedirect(true);
+        });
+    }
+
+    const shouldRedirect = (redirect) => {
+        if (redirect) {
+            return <Redirect to='/cart' />
+        }
+    }
+
+    const showCartButton = (showAddToCartButton) => {
+        if(showAddToCartButton){
+            return(
+                <button onClick={addToCart} className="btn btn-outline-warning">
+                Add to Cart
+            </button>
+            );
+        }else{
+            return(' ');
+        }
+    }
+
+    const showRemoveButtons = (showRemoveButton) => {
+        if(showRemoveButton){
+            return(
+                <button onClick={ () => removeItem(product._id)} className="btn btn-outline-danger">
+                Remove Item
+            </button>
+            );
+        }else{
+            return(' ');
+        }
+    }
+
+    const handleChange = (productId) => (event) => {
+        setCount(event.target.value < 1 ? 1 : event.target.value);
+        if(event.target.value > 1){
+            updateItem(productId, event.target.value);
+        }
+    }
+
+    const updateButton = (cartUpdateButton) => {
+        if(cartUpdateButton){
+            return (
+                <div className='input-group mb-3'>
+                    <div className='input-group-prepend'>
+                        <span className="input-group-text">
+                            Adjsut Quantity
+                        </span>
+                    </div>
+                    <input type='number' className="flow-control" value={count} onChange={handleChange(product._id)}/>
+                </div>
+            );
+        }
+        
+    }
+
     return (
-
-        // <div className="card">
-        // <img className="card-img-top" src="https://m.media-amazon.com/images/I/81-kYsU1JeL._AC_UL320_.jpg"></img>
-        //     <div className="card-body">
-        //         <h5 className="card-title">{product.name}</h5>
-        //         <p className="card-text"> ₹ {product.price}</p>
-        //         <p className="card-text">{product.description}</p>
-        //         <Link to='/'>
-        //             <button className="btn btn-primary">
-        //                 View Product
-        //             </button>
-        //         </Link>
-        //         <button className="btn btn-outline-warning mt-2 mb-2">
-        //             Add to Cart
-        //         </button>
-        //     </div>
-        // </div>
-
 
         <div className="product">
 
@@ -41,11 +86,13 @@ const Card = ({ product }) => {
                         View Product
                     </button>
                 </Link>
-                <button className="btn btn-outline-warning">
-                    Add to Cart
-                </button>
-            </div>
+                {showCartButton(showAddToCartButton)}
+                {showRemoveButtons(showRemoveButton)}
+                {updateButton(cartUpdateButton)}
 
+
+            </div>
+            {shouldRedirect(redirect)}
 
         </div>
 
