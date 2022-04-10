@@ -22,7 +22,7 @@ const Dashboard = () => {
                     </Link>
                 </li>
                 <li className='list-group-item'>
-                    <Link className='nav-Link' to="/updateProfile">
+                    <Link className='nav-Link' to={`/profile/${Id}`}>
                       Update Profile
                     </Link>
                 </li>
