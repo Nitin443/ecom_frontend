@@ -70,7 +70,7 @@ const Card = ({product, showAddToCartButton=true, cartUpdateButton=false, showRe
 
         <div className="product">
 
-            <img src='https://m.media-amazon.com/images/I/81-kYsU1JeL._AC_UL320_.jpg' alt="productImg" />
+            <img src={product.url} alt="productImg" />
             <div className="productInfo">
                 <p>{product.name}</p>
                 <p className="productPrice">

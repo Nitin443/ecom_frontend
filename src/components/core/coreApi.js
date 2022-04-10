@@ -91,3 +91,22 @@ export const getSingleProduct = async (productId) => {
         throw new Error(error);
     }
 };
+
+export const getTreeToken = async (userId, token) => {    
+    try {
+        const response = await fetch(`http://localhost:8000/tree/getToken/${userId}`, {
+            method: "GET",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
+            },
+        });
+
+        const data = await response.json();
+        return await data;
+
+    } catch (error) {
+        throw new Error(error);
+    }
+};

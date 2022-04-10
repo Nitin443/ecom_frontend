@@ -24,7 +24,7 @@ const ProductPage = ({ product }) => {
 
         <div className="productStylesss fluid-container">
             <div className="imageClasses">
-                <img src='https://m.media-amazon.com/images/I/81-kYsU1JeL._AC_UL320_.jpg' alt="productImg" />
+                <img src={product.url} alt="productImg" />
             </div>
             <div className="productDetailsss">
                 <div className="">

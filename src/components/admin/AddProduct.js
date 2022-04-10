@@ -22,7 +22,8 @@ function AddProduct() {
         error: '',
         createdProduct: '',
         redirectToProfile: false,
-        formData: ''
+        formData: '',
+        url: ''
     });
 
     const {
@@ -38,7 +39,8 @@ function AddProduct() {
         error,
         createdProduct,
         redirectToProfile,
-        formData
+        formData, 
+        url
     } = values;
 
     const init = async () => {
@@ -84,6 +86,11 @@ function AddProduct() {
                     <label className='btn btn-primary'>
                         <input onChange={handleChange('image')} type='file' name='image' accept='image/*' />
                     </label>
+                </div>
+
+                <div className='form-group'>
+                    <label className='text-muted'> Product Image Url</label>
+                    <input onChange={handleChange('url')} type='text' className='form-control' value={url} />
                 </div>
 
                 <div className='form-group'>

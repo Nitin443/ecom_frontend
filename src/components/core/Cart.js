@@ -17,11 +17,8 @@ const Cart = () => {
     const showItems = (items) => {
         return (
             <div  >
-                <div className="topdiv">
                 <h2 style={{padding: '10px'}}> Your Cart has {items.length} Items</h2>
-                <Checkout products={items}/>
-                </div>
-
+                
                 <div className="cartStyle">
                 {items.map((product, i) => {
                     return (
@@ -51,9 +48,15 @@ const Cart = () => {
                 className="container-fluid"
             />
               
+              <div className="topdiv">
+                <div>
                {items.length > 0 ? showItems(items) : noItemMessage()}
+               </div>
+               <div>
+               <Checkout products={items}/>
+               </div>
 
-            
+               </div>
         </div>
 
     );
