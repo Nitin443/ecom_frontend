@@ -8,7 +8,7 @@ import Radiobox from './Radiobox';
 import { getFilterProducts } from './coreApi';
 import Card from './Card';
 import './Card.css';
-import { getProduct } from './coreApi';
+import { getAllProduct } from './coreApi';
 import './Shop.css';
 import Search from './Search';
 
@@ -50,7 +50,7 @@ const Shop = () => {
     }
 
     const loadProductsByArrival = async () => {
-        const products = await getProduct('createdAt');
+        const products = await getAllProduct('createdAt');
         console.log(products);
         if (products.errorMessage) {
             setError(products.errorMessage);
