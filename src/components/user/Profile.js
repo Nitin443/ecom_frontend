@@ -36,8 +36,8 @@ const Profile = () => {
         setValues({...values, error: false, [name]: e.target.value });
     };
 
-    const formSubmit = async (e) => {
-        e.preventDefault();
+    const formSubmit = async (event) => {
+        event.preventDefault();
         const updateData = await updateUserProfile(token, {name, email, password});
         if(updateData.errorMessage){
             console.log(updateData.errorMessage);
@@ -65,7 +65,7 @@ const Profile = () => {
             <input type='password' onChange={handleChange('password')} className='form-control' value={password}/>
             </div>
 
-            <button onClick={formSubmit()}  type='submit' className='btn btn-primary'>Update Profile</button>
+            <button onClick={formSubmit}  type='submit' className='btn btn-primary'>Update Profile</button>
 
         </form>
         );
