@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import Layout from "../core/Layout";
 import Menu from "../core/Menu";
-import {signup} from "../authApi";
-import {isUndefined} from "lodash";
-import {Link} from "react-router-dom";
+import { signup } from "../authApi";
+import { isUndefined } from "lodash";
+import { Link } from "react-router-dom";
+import './Signup.css';
 
 
 function Signup() {
@@ -27,20 +28,20 @@ function Signup() {
     // const handleChange = (name) => (event) => {
     //     setValues({ ...values, error: false, [name]: event.target.value });
     // };
-    
+
     // destructure values value
     const { name, email, password, error, success } = values;
 
 
-    const clickSignup = async(event) => {
+    const clickSignup = async (event) => {
         event.preventDefault();
-     const data = await signup({ name, email, password });
+        const data = await signup({ name, email, password });
 
-       if(!isUndefined(data.errorMessage)){
-           setValues({...values, error: data.errorMessage, success: false});
-       }else{
-           setValues({...values, name: '', email: '', password: '', error: '', success: true});
-       }
+        if (!isUndefined(data.errorMessage)) {
+            setValues({ ...values, error: data.errorMessage, success: false });
+        } else {
+            setValues({ ...values, name: '', email: '', password: '', error: '', success: true });
+        }
     };
 
     const showError = () => {
@@ -62,26 +63,28 @@ function Signup() {
 
     const signupForm = () => {
         return (
-            <form>
+            <div className="">
+                <form>
 
-                <div className="form-group">
-                    <label className="text-muted">Name</label>
-                    <input onChange={handleChange('name')} type="text" className="form-control" value={name} />
-                </div>
+                    <div className="form-group">
+                        <label className="text-muted">Name</label>
+                        <input onChange={handleChange('name')} type="text" className="form-control" value={name} />
+                    </div>
 
-                <div className="form-group">
-                    <label className="text-muted">Email</label>
-                    <input onChange={handleChange('email')} type="email" className="form-control" value={email} />
-                </div>
+                    <div className="form-group">
+                        <label className="text-muted">Email</label>
+                        <input onChange={handleChange('email')} type="email" className="form-control" value={email} />
+                    </div>
 
-                <div className="form-group">
-                    <label className="text-muted">Password</label>
-                    <input onChange={handleChange('password')} type="password" className="form-control" value={password} />
-                </div>
+                    <div className="form-group">
+                        <label className="text-muted">Password</label>
+                        <input onChange={handleChange('password')} type="password" className="form-control" value={password} />
+                    </div>
 
-                <button onClick={clickSignup} className="btn btn-primary">SignUp</button>
+                    <button onClick={clickSignup} className="btn btn-primary">SignUp</button>
 
-            </form>
+                </form>
+            </div>
         );
     }
 
@@ -90,14 +93,18 @@ function Signup() {
         <div className='signup'>
 
             <Menu />
-             
+
             <Layout title="Signup" description="Signup To Our App" className="container col-md-6 offset-md-6" >
-              
+
+
+
+
+            </Layout>
+            <div className="upDiv">
                 {showError()}
                 {showSucess()}
                 {signupForm()}
-                
-            </Layout>
+            </div>
         </div>
     );
 }
