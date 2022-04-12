@@ -6,6 +6,7 @@ import Card from "./Card";
 import { Link } from "react-router-dom";
 import './Cart.css';
 import Checkout from "./Checkout";
+import Footer from './Footer';
 
 const Cart = () => {
     const [items, setItems] = useState([]);
@@ -57,6 +58,7 @@ const Cart = () => {
                </div>
 
                </div>
+               <Footer />
         </div>
 
     );
