@@ -1,0 +1,22 @@
+.topDiv{
+    background-color: black;
+    padding-bottom: 2rem;
+    margin-bottom: 5rem;
+}
+
+.h1Color{
+    color: white
+}
+
+.inDiv{
+    display: flex;
+    justify-content: first baseline;
+}
+
+.deleteBtn{
+    background-color: red;
+}
+
+.updateBtn{
+    background-color: green;
+}
