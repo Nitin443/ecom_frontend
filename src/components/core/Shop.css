@@ -16,3 +16,13 @@
  .filterButton{
      margin-left: 2.5em;
  }
+
+ .filterStyle{
+     padding-left: 2rem;
+ }
+
+ .filterColor{
+     background-color: lightgray;
+     padding: 1rem;
+     margin-bottom: 1rem;
+ }

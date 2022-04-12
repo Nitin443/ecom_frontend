@@ -41,7 +41,7 @@ const Search = () => {
     const searchProducts = (results = []) => {
           return (
               <div>
-              <h3>Search Products</h3>
+              <hr />
               <div className='productStyles'>
                {results.map((product ,i) => {
                 return(
@@ -93,7 +93,7 @@ const Search = () => {
                               })};
                             </select>
                         </div>
-                        <input type='search' className='form-control searchBox' onChange={handleChange('search')} placeholder='Search By Name'/>
+                        <input type='search' className='form-control searchBox' onChange={handleChange('search')} placeholder='Search Here'/>
                         <div className=''>
                      <button className='btn buttonStyle btn-primary'>Search</button>
                     </div>

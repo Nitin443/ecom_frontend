@@ -34,7 +34,6 @@ const ProductPage = ({ product }) => {
                         <strong>{product.price}</strong>
                     </p>
                     <p>{product.description}</p>
-                    <p>Sold : {product.sold}</p>
                     <p>Left in Stock : {product.quantity}</p>
                 </div>
                 

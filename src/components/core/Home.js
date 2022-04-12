@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import Layout from './Layout';
 import Menu from './Menu';
 import { API } from '../../config';
-import { getProduct } from './coreApi';
+import { getProduct, getProduct1 } from './coreApi';
 import Card from './Card';
 import './Card.css';
 import Search from './Search';
 import './Home.css';
+import Footer from './Footer';
 
 function Home() {
 
@@ -15,7 +16,7 @@ function Home() {
     const [error, setError] = useState(false);
 
     const loadProductsBySell = async () => {
-        const products = await getProduct('sold');
+        const products = await getProduct1('sold');
         if (products.errorMessage) {
             setError(products.errorMessage);
         } else {
@@ -45,7 +46,7 @@ function Home() {
             <Menu />
 
             <Layout
-                title="Nitin Ecommerce App"
+                title="Ecommerce App"
                 description="Welcome To Our Ecommerce App. Do Shopping With Best Price"
                 className="container-fluid"
             />
@@ -73,7 +74,7 @@ function Home() {
 
             </div>
 
-
+           <Footer />
 
 
         </div>

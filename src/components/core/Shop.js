@@ -11,6 +11,7 @@ import './Card.css';
 import { getAllProduct } from './coreApi';
 import './Shop.css';
 import Search from './Search';
+import Footer from './Footer';
 
 const Shop = () => {
     const token = localStorage.getItem("token");
@@ -106,22 +107,24 @@ const Shop = () => {
                 
             />
             <div className='shopStyle'>
-                <div className=''>
+                <div className='filterStyle'>
                     <h4>Filter By Categories</h4>
+                    <div className='filterColor'>
                     <ul>
                         <Checkbox categories={category}
                             handlefilters={filter => handleFilters(filter, 'category')}
                         />
                     </ul>
-
+                    </div>
                     <h4>Filter By Price Range</h4>
+                    <div className='filterColor'>
                     <ul>
                         <Radiobox prices={prices}
                             handlefilters={filter => handleFilters(filter, 'price')}
                         />
                     </ul>
-
-                    <button onClick={removeFilter} className='btn filterButton btn-primary'>Remove Filters</button>
+                    </div>
+                    <button onClick={removeFilter} className='btn  filterButton btn-primary'>Remove Filters</button>
 
                 </div>
                 <div className='container'>
@@ -138,6 +141,7 @@ const Shop = () => {
 
                 </div>
             </div>
+            <Footer />
         </div>
     );
 }
