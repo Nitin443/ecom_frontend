@@ -1,16 +1,44 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from "react-router-dom";
+import useRazorpay from "react-razorpay";
+import { useCallback } from "react";
 import DropIn from 'braintree-web-drop-in-react';
 import { isAuthenticate } from "../authApi";
 import { getTreeToken } from './coreApi';
+import { PAYMTKEY } from '../../config';
 var dropin = require('braintree-web-drop-in');
 
-// braintree.dropin.create({
-//     authorization: "CLIENT_AUTHORIZATION"
-//   }, callback);
+
 
 
 const Checkout = ({ products }) => {
+    const Razorpay = useRazorpay();
+
+    const handlePayment = useCallback(() => {
+       // const order = await createOrder(params);
+        const options = {
+          key: PAYMTKEY,
+          amount: "3000",
+          currency: "INR",
+          name: "Acme Corp",
+          description: "Test Transaction",
+          image: "https://example.com/your_logo",
+          prefill: {
+            name: "Piyush Garg",
+            email: "youremail@example.com",
+            contact: "9999999999",
+          },
+          notes: {
+            address: "Razorpay Corporate Office",
+          },
+          theme: {
+            color: "#3399cc",
+          },
+        };
+    
+        const rzpay = new Razorpay(options);
+        rzpay.open();
+      }, [Razorpay]);
 
     const token = localStorage.getItem("token");
     const userId = localStorage.getItem("userId");
@@ -24,8 +52,6 @@ const Checkout = ({ products }) => {
     });
 
   
-
-    //   dropin.create({ /* options */ }, callback);
 
     const getToken = async (userId, token) => {
         const result = await getTreeToken(userId, token);
@@ -46,6 +72,8 @@ const Checkout = ({ products }) => {
         }, 0);
     }
 
+      
+
     const showDropIn = () => {
         if (data.clinetToken !== null) {
             return (
@@ -54,12 +82,13 @@ const Checkout = ({ products }) => {
                         options={{ authorization: data.clinetToken }}
                         onInstance={instance => instance = instance}
                     />
-                    <button className="btn btn-success">Checkout</button>
+                    <button style={{margin: '1rem'}} className="btn btn-primary">Checkout</button>
+                    <button onClick={handlePayment} className="btn btn-success">Pay Now</button>
                 </div>
             );
         }else{
             return(
-            'ok'
+            <h2>Loading...</h2>
             );
         }
         // return(
