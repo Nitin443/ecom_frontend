@@ -1,9 +1,30 @@
 
 .divStyle{
-    text-align: center;
+    /* text-align: center;
     background-color: #191919;
     color: white;
     padding-top: 3rem;
     padding-bottom: 3rem;
+    margin-top: 2rem; */
+    background-color: #191919;
+    color: white;
+    display: flex;
+    justify-content: space-around;
     margin-top: 2rem;
+    padding: 2rem;
+    flex-wrap: wrap;
+}
+
+
+.logo{
+    font-size: 3rem;
+}
+
+.logoDe{
+  margin-right: 1rem;
+  color: aliceblue;
+}
+
+.logoDe:hover{
+  color: red;
 }

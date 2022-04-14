@@ -5,7 +5,6 @@ import { useCallback } from "react";
 import DropIn from 'braintree-web-drop-in-react';
 import { isAuthenticate } from "../authApi";
 import { getTreeToken } from './coreApi';
-import { PAYMTKEY } from '../../config';
 var dropin = require('braintree-web-drop-in');
 
 
@@ -15,30 +14,31 @@ const Checkout = ({ products }) => {
     const Razorpay = useRazorpay();
 
     const handlePayment = useCallback(() => {
-       // const order = await createOrder(params);
+        // const order = await createOrder(params);
+        const key = "rzp_test_F5sIjFw3qbpwNO";
         const options = {
-          key: PAYMTKEY,
-          amount: "3000",
-          currency: "INR",
-          name: "Acme Corp",
-          description: "Test Transaction",
-          image: "https://example.com/your_logo",
-          prefill: {
-            name: "Piyush Garg",
-            email: "youremail@example.com",
-            contact: "9999999999",
-          },
-          notes: {
-            address: "Razorpay Corporate Office",
-          },
-          theme: {
-            color: "#3399cc",
-          },
+            key: key,
+            amount: getTotal()*100,
+            currency: "INR",
+            name: "Ecom App",
+            description: "Test Transaction",
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbgsnX1c2t44rNFqGWbnkwjxBvgtTJaJ7LFA&usqp=CAU",
+            prefill: {
+                name: "Ecom App",
+                email: "ecomapp@example.com",
+                contact: "9999999999",
+            },
+            notes: {
+                address: "Razorpay Corporate Office",
+            },
+            theme: {
+                color: "#3399cc",
+            },
         };
-    
+
         const rzpay = new Razorpay(options);
         rzpay.open();
-      }, [Razorpay]);
+    }, [Razorpay]);
 
     const token = localStorage.getItem("token");
     const userId = localStorage.getItem("userId");
@@ -51,7 +51,7 @@ const Checkout = ({ products }) => {
         address: ''
     });
 
-  
+
 
     const getToken = async (userId, token) => {
         const result = await getTreeToken(userId, token);
@@ -72,38 +72,49 @@ const Checkout = ({ products }) => {
         }, 0);
     }
 
-      
+
 
     const showDropIn = () => {
         if (data.clinetToken !== null) {
             return (
                 <div>
-                    <DropIn
+                    {/* <DropIn
                         options={{ authorization: data.clinetToken }}
                         onInstance={instance => instance = instance}
-                    />
-                    <button style={{margin: '1rem'}} className="btn btn-primary">Checkout</button>
-                    <button onClick={handlePayment} className="btn btn-success">Pay Now</button>
+                    /> */}
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                                Products : 
+                                <span>₹ {getTotal()}</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                Shipping Charge : 
+                                <span>₹ 0</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                                <div>
+                                    <strong>Total amount</strong>
+                                    <strong>
+                                        <p class="mb-0">(including GST)</p>
+                                    </strong>
+                                </div>
+                                <span><strong>₹ {getTotal()}</strong></span>
+                            </li>
+                        </ul>
+
+                        <button  onClick={handlePayment} type="button" class="btn btn-primary btn-lg btn-block">
+                            Make purchase
+                        </button>
+                    </div>
+
                 </div>
             );
-        }else{
-            return(
-            <h2>Loading...</h2>
+        } else {
+            return (
+                <h2>Loading...</h2>
             );
         }
-        // return(
-        //     <div>
-        //         {products.length > 0 ? (
-        //             <div>
-        //                 <DropIn options={{
-        //                     authorization: data.clinetToken
-        //                 }} onInstance={instance => instance = instance}
-        //                 />
-        //             <button className="btn btn-success">Checkout</button>
-        //             </div>
-        //         ) : ' ok'}
-        //     </div>
-        // );
     }
 
     const showCheckoutButton = () => {
@@ -115,7 +126,7 @@ const Checkout = ({ products }) => {
 
     return (
         <div>
-            <h2>Total Amount : ₹ {getTotal()}</h2>
+            <h2>All Products Order Details</h2>
             {showCheckoutButton()}
         </div>
     );
