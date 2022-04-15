@@ -6,7 +6,7 @@ export const getProduct = async (sortBy) => {
         //     method: "GET",
         // });
 
-        const response = await fetch(`http://localhost:8000/product/list?sordBy=${sortBy}&order=desc&limit=4`, {
+        const response = await fetch(`https://ecombackend1999.herokuapp.com/product/list?sordBy=${sortBy}&order=desc&limit=4`, {
             method: "GET",
         });
 
@@ -24,7 +24,7 @@ export const getProduct1 = async (sortBy) => {
         //     method: "GET",
         // });
 
-        const response = await fetch(`http://localhost:8000/product/list?sordBy=${sortBy}&order=asc&limit=4`, {
+        const response = await fetch(`https://ecombackend1999.herokuapp.com/product/list?sordBy=${sortBy}&order=asc&limit=4`, {
             method: "GET",
         });
 
@@ -42,7 +42,7 @@ export const getAllProduct = async (sortBy) => {
         //     method: "GET",
         // });
 
-        const response = await fetch(`http://localhost:8000/product/list?sordBy=${sortBy}&order=desc&limit=50`, {
+        const response = await fetch(`https://ecombackend1999.herokuapp.com/product/list?sordBy=${sortBy}&order=desc&limit=50`, {
             method: "GET",
         });
 
@@ -56,7 +56,7 @@ export const getAllProduct = async (sortBy) => {
 
 export const getCategory = async (token) => {    
     try {
-        const response = await fetch('http://localhost:8000/category/get', {
+        const response = await fetch('https://ecombackend1999.herokuapp.com/category/get', {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${token}`
@@ -77,7 +77,7 @@ export const getFilterProducts = async (limit, skip, filters = {}) => {
        limit, skip, filters
     }; 
     try {
-        const response = await fetch('http://localhost:8000/product/search', {
+        const response = await fetch('https://ecombackend1999.herokuapp.com/product/search', {
             method: "POST",
             headers: {
                 Accept: "application/json",
@@ -99,7 +99,7 @@ export const getFilterProducts = async (limit, skip, filters = {}) => {
 export const list = async (params) => {    
     try {
         const query = queryString.stringify(params);
-        const response = await fetch(`http://localhost:8000/product/listSearch?${query}`, {
+        const response = await fetch(`https://ecombackend1999.herokuapp.com/product/listSearch?${query}`, {
             method: "POST",
         });
 
@@ -114,7 +114,7 @@ export const list = async (params) => {
 ///get/:productId
 export const getSingleProduct = async (productId) => {    
     try {
-        const response = await fetch(`http://localhost:8000/product/get/${productId}`, {
+        const response = await fetch(`https://ecombackend1999.herokuapp.com/product/get/${productId}`, {
             method: "GET",
             headers: {
             },
@@ -130,7 +130,7 @@ export const getSingleProduct = async (productId) => {
 
 export const getTreeToken = async (userId, token) => {    
     try {
-        const response = await fetch(`http://localhost:8000/tree/getToken/${userId}`, {
+        const response = await fetch(`https://ecombackend1999.herokuapp.com/tree/getToken/${userId}`, {
             method: "GET",
             headers: {
                 Accept: "application/json",

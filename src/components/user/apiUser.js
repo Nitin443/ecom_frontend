@@ -1,6 +1,6 @@
 export const getUserProfile = async (token) => {   
     try {
-        const response = await fetch(`http://localhost:8000/userProfile`, {
+        const response = await fetch(`https://ecombackend1999.herokuapp.com/userProfile`, {
             method: "GET",
             headers: {
                 Accept: "application/json",
@@ -20,7 +20,7 @@ export const getUserProfile = async (token) => {
 
 export const updateUserProfile = async (token, user) => {   
     try {
-        const response = await fetch(`http://localhost:8000/updateProfile`, {
+        const response = await fetch(`https://ecombackend1999.herokuapp.com/updateProfile`, {
             method: "PUT",
             headers: {
                 Accept: "application/json",

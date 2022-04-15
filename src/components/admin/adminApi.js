@@ -2,7 +2,7 @@ import { API } from "../../config";
 
 export const creatCategory = async (token, category) => {    
     try {
-        const response = await fetch('http://localhost:8000/category/create', {
+        const response = await fetch('https://ecombackend1999.herokuapp.com/category/create', {
             method: "POST",
             headers: {
                 Accept: "application/json",
@@ -24,7 +24,7 @@ export const creatCategory = async (token, category) => {
 
 export const addProduct = async (token, product) => {    
     try {
-        const response = await fetch('http://localhost:8000/product/create', {
+        const response = await fetch('https://ecombackend1999.herokuapp.com/product/create', {
             method: "POST",
             headers: {
                 Accept: "application/json",
@@ -44,7 +44,7 @@ export const addProduct = async (token, product) => {
 
 export const getCategory = async (token) => {    
     try {
-        const response = await fetch('http://localhost:8000/category/get', {
+        const response = await fetch('https://ecombackend1999.herokuapp.com/category/get', {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${token}`
@@ -62,7 +62,7 @@ export const getCategory = async (token) => {
 
 export const getProducts = async () => {    
     try {
-        const response = await fetch('http://localhost:8000/product/get', {
+        const response = await fetch('https://ecombackend1999.herokuapp.com/product/get', {
             method: "GET",
         });
 
@@ -77,7 +77,7 @@ export const getProducts = async () => {
 
 export const deleteProduct = async (token, productId) => {    
     try {
-        const response = await fetch(`http://localhost:8000/product/delete/${productId}`, {
+        const response = await fetch(`https://ecombackend1999.herokuapp.com/product/delete/${productId}`, {
             method: "DELETE",
             headers: {
                 Accept: "application/json",
@@ -96,7 +96,7 @@ export const deleteProduct = async (token, productId) => {
 
 export const getSingleProduct = async (productId) => {    
     try {
-        const response = await fetch(`http://localhost:8000/product/get/${productId}`, {
+        const response = await fetch(`https://ecombackend1999.herokuapp.com/product/get/${productId}`, {
             method: "GET",
         });
 
@@ -111,7 +111,7 @@ export const getSingleProduct = async (productId) => {
 
 export const updateProduct = async (token, productId, productData) => {    
     try {
-        const response = await fetch(`http://localhost:8000/product//update/${productId}`, {
+        const response = await fetch(`https://ecombackend1999.herokuapp.com/product//update/${productId}`, {
             method: "PUT",
             headers: {
                 Accept: "application/json",
