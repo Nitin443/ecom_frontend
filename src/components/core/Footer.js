@@ -10,12 +10,11 @@ const Footer = () => {
     </div>
       <div className='text'>
         <p>Made By Nitin Kumar</p>
-        © 2022 Copyright
-        <a class="text-white" href="#">ecomApp</a>
+          © 2022 Copyright
       </div>
       <div className='logo'>
-       <Link to="https://github.com/Nitin443/ecom_frontend"><GithubOutlined className='logoDe'/> </Link> 
-        <Link to='https://www.linkedin.com/in/nitin-kumar-6522591b2/'><LinkedinOutlined  className='logoDe' /></Link>
+       <a  href="https://github.com/Nitin443/ecom_frontend"><GithubOutlined className='logoDe'/></a>
+       <a  href="https://www.linkedin.com/in/nitin-kumar-6522591b2/"><LinkedinOutlined className='logoDe'/></a>
       </div>
     </div>
   );

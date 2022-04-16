@@ -18,7 +18,7 @@ const Checkout = ({ products }) => {
         const key = "rzp_test_F5sIjFw3qbpwNO";
         const options = {
             key: key,
-            amount: getTotal()*100,
+            amount: parseInt(getTotal()*100),
             currency: "INR",
             name: "Ecom App",
             description: "Test Transaction",
@@ -38,7 +38,12 @@ const Checkout = ({ products }) => {
 
         const rzpay = new Razorpay(options);
         rzpay.open();
+        clearCart();
     }, [Razorpay]);
+
+    const clearCart = async () => {
+      localStorage.removeItem("cart");
+    }
 
     const token = localStorage.getItem("token");
     const userId = localStorage.getItem("userId");
