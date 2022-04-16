@@ -16,16 +16,17 @@ const Checkout = ({ products }) => {
     const handlePayment = useCallback(() => {
         // const order = await createOrder(params);
         const key = "rzp_test_F5sIjFw3qbpwNO";
+        const amt = parseInt(getTotal())*100 + 1;
         const options = {
             key: key,
-            amount: parseInt(getTotal()*100),
+            amount: amt,
             currency: "INR",
             name: "Ecom App",
             description: "Test Transaction",
             image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbgsnX1c2t44rNFqGWbnkwjxBvgtTJaJ7LFA&usqp=CAU",
             prefill: {
-                name: "Ecom App",
-                email: "ecomapp@example.com",
+                name: localStorage.getItem('name'),
+                email: localStorage.getItem('email'),
                 contact: "9999999999",
             },
             notes: {
