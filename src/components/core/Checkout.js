@@ -19,7 +19,7 @@ const Checkout = ({ products }) => {
         const amt = parseInt(getTotal())*100 + 1;
         const options = {
             key: key,
-            amount: amt,
+            amount: 1000,
             currency: "INR",
             name: "Ecom App",
             description: "Test Transaction",
